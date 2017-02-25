@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{7763a8be-3a1b-4d2c-954a-0c2ee40a4d69}</ProjectGuid>
+    <ProjectGuid>{7763A8BE-3A1B-4D2C-954A-0C2EE40A4D69}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GermanWords</RootNamespace>
@@ -12,13 +12,11 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.10586.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    
     <PackageCertificateKeyFile>GermanWords_TemporaryKey.pfx</PackageCertificateKeyFile>
-    
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -91,12 +89,36 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="App.config" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BindableClass.cs" />
+    <Compile Include="Converters\EnumToStringConverter.cs" />
+    <Compile Include="Converters\EnumToOpacityConverter.cs" />
+    <Compile Include="Migrations\20170223222345_firstmig.cs" />
+    <Compile Include="Migrations\20170223222345_firstmig.designer.cs">
+      <DependentUpon>20170223222345_firstmig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\WordsContextModelSnapshot.cs" />
+    <Compile Include="Model\Article.cs" />
+    <Compile Include="Model\ArticleNameBase.cs" />
+    <Compile Include="Model\Name.cs" />
+    <Compile Include="Model\OtherForms.cs" />
+    <Compile Include="Model\Verb.cs" />
+    <Compile Include="Model\WordDictionary.cs" />
+    <Compile Include="Model\WordsContext.cs" />
+    <Compile Include="TestUserCotrol.xaml.cs">
+      <DependentUpon>TestUserCotrol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WordView.xaml.cs">
+      <DependentUpon>WordView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VM\GermanWordsViewModel.cs" />
+    <Compile Include="Model\Word.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -106,11 +128,23 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    
     <None Include="GermanWords_TemporaryKey.pfx" />
-    
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Icons\add.png" />
+    <Content Include="Assets\Icons\asterisk.png" />
+    <Content Include="Assets\Icons\butterflyBig.png" />
+    <Content Include="Assets\Icons\female.png" />
+    <Content Include="Assets\Icons\femenine.png" />
+    <Content Include="Assets\Icons\male.png" />
+    <Content Include="Assets\Icons\masculine.png" />
+    <Content Include="Assets\Icons\more.png" />
+    <Content Include="Assets\Icons\one.png" />
+    <Content Include="Assets\Icons\oneF.png" />
+    <Content Include="Assets\Icons\plus.png" />
+    <Content Include="Assets\WordImages\Kind\child.png" />
+    <Content Include="Assets\WordImages\Mutter\mother.png" />
+    <Content Include="Assets\WordImages\Vater\father.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -129,12 +163,40 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Resources\Controls\GButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Controls\GListBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Controls\GListBoxItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Controls\GTextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TestUserCotrol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WordView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
-  
+  <ItemGroup>
+    <SDKReference Include="WindowsMobile, Version=10.0.14393.0">
+      <Name>Windows Mobile Extensions for the UWP</Name>
+    </SDKReference>
+  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
-
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

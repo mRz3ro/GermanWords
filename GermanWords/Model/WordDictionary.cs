@@ -707,9 +707,11 @@ namespace GermanWords.Model
 
             string searchw = searchWord.ToLower();
 
-            words = _words.Where(w => w.Description.ToLower().StartsWith(searchw) ||
-            w.PtDescription.ToLower().StartsWith(searchw)
-            || (w is Name && ((Name)w).Article.Description.ToLower().StartsWith(searchw))).ToList();
+            words = _names.Where(w => w.Description.ToLower().StartsWith(searchw)
+            ||  w.PtDescription.ToLower().StartsWith(searchw)
+            || (w is Name && ((Name)w).Article.Description.ToLower().StartsWith(searchw))
+            || (w is Name && ((Name)w).Article.PtDescription.ToLower().StartsWith(searchw))
+            ).ToList();
 
             _wordsToPresent.Clear();
             words.ForEach(w => this.WordsToPresent.Add(w));
@@ -747,7 +749,7 @@ namespace GermanWords.Model
         {
             using (var db = new WordsContext())
             {
-                //_words = new List<Word>(db.Words.ToList());
+                _words = new List<Word>(db.Words.ToList());
                 _names = new List<Word>(db.Words.Where(n => n is Name).Include(w => ((Name)w).OtherForms)
                     .Include(w => ((Name)w).Article).ToList());
                 _articles = new List<Word>(db.Words.Where(n => n is Article).ToList());

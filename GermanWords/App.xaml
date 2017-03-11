@@ -2,7 +2,6 @@
     x:Class="GermanWords.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:GermanWords"
     RequestedTheme="Dark">
     <Application.Resources>
         <ResourceDictionary>
@@ -11,6 +10,7 @@
                 <ResourceDictionary Source="Resources/Controls/GTextBox.xaml" />
                 <ResourceDictionary Source="Resources/Controls/GListBox.xaml" />
                 <ResourceDictionary Source="Resources/Controls/GListBoxItem.xaml" />
+                <ResourceDictionary Source="Resources/Controls/GAutoSuggestBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

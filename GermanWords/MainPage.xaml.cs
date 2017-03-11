@@ -36,5 +36,10 @@ namespace GermanWords
         {
             this.Frame.Navigate(typeof(WordView), this.DataContext);
         }
+
+        private void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        {
+            var x = 1;
+        }
     }
 }

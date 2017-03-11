@@ -1,4 +1,5 @@
 ﻿using GermanWords.Views;
+using System.Text.RegularExpressions;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -39,7 +40,17 @@ namespace GermanWords
 
         private void AutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
-            var x = 1;
+            string pattern = @"\d";
+
+            // If the search box is null or empty or whitespace there is no action taken
+            if (string.IsNullOrEmpty(args.QueryText)
+                || args.QueryText.Contains(" ")
+                || Regex.IsMatch(args.QueryText, pattern))
+                return;
+
+            var a = 1;
+
+
         }
     }
 }

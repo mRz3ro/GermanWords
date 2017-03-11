@@ -114,6 +114,9 @@
     <Compile Include="TestUserCotrol.xaml.cs">
       <DependentUpon>TestUserCotrol.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AddWordView.xaml.cs">
+      <DependentUpon>AddWordView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\WordView.xaml.cs">
       <DependentUpon>WordView.xaml</DependentUpon>
     </Compile>
@@ -142,6 +145,7 @@
     <Content Include="Assets\Icons\one.png" />
     <Content Include="Assets\Icons\oneF.png" />
     <Content Include="Assets\Icons\plus.png" />
+    <Content Include="Assets\Icons\question-mark.png" />
     <Content Include="Assets\WordImages\Kind\child.png" />
     <Content Include="Assets\WordImages\Mutter\mother.png" />
     <Content Include="Assets\WordImages\Vater\father.png" />
@@ -185,6 +189,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="TestUserCotrol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddWordView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

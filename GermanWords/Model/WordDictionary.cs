@@ -87,15 +87,25 @@ namespace GermanWords.Model
                     List<OtherForms> temp = selectedName.
                         OtherForms.ToList();
 
-                    temp = selectedName.
-                        OtherForms.OrderBy(of => of.Name.Article.ArticleType).ToList();
+                    temp.Sort();
+
+                    //temp = selectedName.
+                    //    OtherForms.OrderBy(of => of.Name.Article.ArticleType).ToList();
+
+                    //selectedName.GroupedForms = new ObservableCollection<Tuple<Name, Name>>
+                    //{
+                    //    new Tuple<Name, Name>(temp[5].OtherForm,temp[4].OtherForm),
+                    //    new Tuple<Name, Name>(temp[3].OtherForm,temp[2].OtherForm),
+                    //    new Tuple<Name, Name>(temp[1].OtherForm,temp[0].OtherForm),
+                    //    new Tuple<Name, Name>(temp[7].OtherForm,temp[6].OtherForm)
+                    //};
 
                     selectedName.GroupedForms = new ObservableCollection<Tuple<Name, Name>>
                     {
-                        new Tuple<Name, Name>(temp[5].OtherForm,temp[4].OtherForm),
-                        new Tuple<Name, Name>(temp[3].OtherForm,temp[2].OtherForm),
-                        new Tuple<Name, Name>(temp[1].OtherForm,temp[0].OtherForm),
-                        new Tuple<Name, Name>(temp[7].OtherForm,temp[6].OtherForm)
+                        new Tuple<Name, Name>(temp[0].OtherForm,temp[1].OtherForm),
+                        new Tuple<Name, Name>(temp[2].OtherForm,temp[3].OtherForm),
+                        new Tuple<Name, Name>(temp[4].OtherForm,temp[5].OtherForm),
+                        new Tuple<Name, Name>(temp[6].OtherForm,temp[7].OtherForm)
                     };
 
                     OnPropertyChanged("SelectedWord");
